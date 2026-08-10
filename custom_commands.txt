@@ -1,0 +1,57 @@
+# ═══════════════════════════════════════════════════════════════════════
+# CUSTOM COMMANDS FILE
+# ═══════════════════════════════════════════════════════════════════════
+#
+# Add your custom static-response commands below.
+# These deliver fixed text responses and do NOT route through the Gemini API.
+#
+# ─── FORMAT ───────────────────────────────────────────────────────────
+#
+#   commandname=Your response text here
+#   commandname|role=Your response text here
+#
+# ─── ROLES ────────────────────────────────────────────────────────────
+#
+#   Restrict who can trigger a command by adding |role after the name.
+#   Roles are determined from Twitch (badges/mod status):
+#
+#     broadcaster  – Only the channel broadcaster
+#     moderator    – Moderators AND the broadcaster
+#     all          – Everyone (default when no role is specified)
+#
+#   The role is case-insensitive. An invalid role defaults to "all".
+#
+# ─── RULES ────────────────────────────────────────────────────────────
+#
+#   - One command per line
+#   - Use any naming convention (!, ?, #, plain text, etc.)
+#   - Command and response are separated by the FIRST = sign only
+#     (your response text may contain additional = characters)
+#   - The optional role is separated from the command name by a | pipe
+#   - Lines starting with # are comments (ignored)
+#   - Empty lines are ignored
+#   - Command names are case-insensitive (!Hello and !hello are the same)
+#   - Responses are sent exactly as written (plaintext only, no variables)
+#   - If duplicate command names exist, the last one wins
+#   - Custom commands are checked BEFORE built-in commands
+#   - The global cooldown (COOLDOWN_DURATION) applies to custom commands
+#   - If a user lacks the required role, the command is silently ignored
+#
+# ─── EXAMPLES (uncomment to use) ─────────────────────────────────────
+#
+# !hello=Hello there! Welcome to the stream!
+# !socials=Follow me on Twitter @example and Instagram @example
+# !discord=Join our Discord: https://discord.gg/example
+# !lurk=Thanks for the lurk! Enjoy your stay.
+# !commands=Available commands: !hello, !socials, !discord, !lurk
+# ?help=Type !ask followed by your question to chat with the bot!
+#
+# ── With roles ──
+#
+# !shutdown|broadcaster=Bot is shutting down... goodbye!
+# !warn|moderator=⚠️ Please follow the chat rules!
+# !hello|all=Hi! This is the same as omitting the role entirely.
+#
+# ═══════════════════════════════════════════════════════════════════════
+
+# Add your commands below this line:

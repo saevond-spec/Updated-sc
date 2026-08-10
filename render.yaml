@@ -1,0 +1,96 @@
+services:
+  - type: web
+    name: your-bot-name
+    runtime: node
+    branch: main
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      # ═══════════════════════════════════════════════════════════════════
+      # REQUIRED: Twitch Bot Configuration
+      # ═══════════════════════════════════════════════════════════════════
+      - key: TWITCH_USERNAME
+        value: "your-bot-username"
+      - key: JOIN_CHANNELS
+        value: "your-channel-1,your-channel-2"
+      - key: TWITCH_CLIENT_ID
+        value: "your-twitch-client-id"
+      - key: TWITCH_CLIENT_SECRET
+        value: "your-twitch-client-secret"
+
+      # ═══════════════════════════════════════════════════════════════════
+      # REQUIRED: AI & API Keys
+      # ═══════════════════════════════════════════════════════════════════
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_MODEL
+        value: "deepseek-chat"
+      - key: REDIS_URL
+        sync: false
+      - key: REDIS_MONTHLY_COMMAND_LIMIT
+        value: "300000"
+      - key: REDIS_SAFETY_RESERVE
+        value: "15000"
+      - key: WORKERS_ENABLED
+        value: "true"
+      - key: WORKER_CONCURRENCY
+        value: "1"
+      - key: WORKER_API_KEY
+        generateValue: true
+      - key: DISCORD_WEBHOOK_URL
+        sync: false
+      - key: SOCIAL_WEBHOOK_URL
+        sync: false
+      - key: THUMBNAIL_WEBHOOK_URL
+        sync: false
+      - key: CLIP_WEBHOOK_URL
+        sync: false
+
+      # ═══════════════════════════════════════════════════════════════════
+      # OPTIONAL: Command Names (customizable triggers)
+      # ═══════════════════════════════════════════════════════════════════
+      - key: BOT_COMMAND_NAME
+        value: "!ask,@yourbotusername"
+      - key: IMAGE_COMMAND_NAME
+        value: "!image"
+      - key: VIDEO_COMMAND_NAME
+        value: "!video"
+      - key: TTS_COMMAND_NAME
+        value: "!tts"
+      - key: MUSIC_COMMAND_NAME
+        value: "!song"
+
+      # ═══════════════════════════════════════════════════════════════════
+      # OPTIONAL: Emote Providers
+      # ═══════════════════════════════════════════════════════════════════
+      - key: ENABLE_7TV_EMOTES
+        value: "true"
+      - key: ENABLE_BTTV_EMOTES
+        value: "true"
+      - key: ENABLE_FFZ_EMOTES
+        value: "true"
+      - key: ENABLE_EMOTE_APPENDING
+        value: "true"
+      - key: EMOTE_APPEND_EXCLUDE_PREFIXES
+        value: "!settitle"
+
+      # ═══════════════════════════════════════════════════════════════════
+      # OPTIONAL: Behavior Tuning
+      # ═══════════════════════════════════════════════════════════════════
+      - key: COOLDOWN_DURATION
+        value: "1"
+      - key: AI_MAX_TOKENS
+        value: "450"
+      - key: AI_HISTORY_LENGTH
+        value: "10"
+      - key: CHAT_CONTEXT_LENGTH
+        value: "10"
+      - key: IGNORED_USERNAMES
+        value: "StreamElements,Nightbot"
+
+      # ═══════════════════════════════════════════════════════════════════
+      # OPTIONAL: Additional API Keys
+      # ═══════════════════════════════════════════════════════════════════
+      - key: YOUTUBE_API_KEY
+        value: "your-youtube-api-key"
