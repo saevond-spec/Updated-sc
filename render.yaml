@@ -46,6 +46,18 @@ services:
         sync: false
       - key: CLIP_WEBHOOK_URL
         sync: false
+      - key: CLIP_WEBHOOK_KEY
+        sync: false
+      - key: HIGHLIGHT_DETECTION_ENABLED
+        value: "true"
+      - key: HIGHLIGHT_WINDOW_SECONDS
+        value: "20"
+      - key: HIGHLIGHT_MIN_MESSAGES
+        value: "3"
+      - key: HIGHLIGHT_COOLDOWN_SECONDS
+        value: "150"
+      - key: HIGHLIGHT_MAX_CLIPS
+        value: "3"
 
       # ═══════════════════════════════════════════════════════════════════
       # OPTIONAL: Command Names (customizable triggers)

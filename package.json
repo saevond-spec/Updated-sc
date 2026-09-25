@@ -5,10 +5,10 @@
   "description": "Full-featured AI streaming platform with EventSub, media generation, moderation, and more",
   "main": "src/app.js",
   "scripts": {
-    "prestart": "node setup.js",
+    "prestart": "node setup.js && node highlights-setup.js",
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "setup": "node setup.js",
+    "setup": "node setup.js && node highlights-setup.js",
     "test": "node --test"
   },
   "dependencies": {

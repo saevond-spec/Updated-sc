@@ -24,6 +24,20 @@ Submit a job with POST /api/jobs/:type and the x-worker-key header. Configure WO
 
 The analysis worker uses DeepSeek and chains clip generation and stream summary jobs. Clip creation, thumbnail rendering, and social publishing require their corresponding webhook URLs. Discord uses a standard Discord webhook URL.
 
+## Automatic Twitch VOD highlights
+
+The optional highlight detector watches live chat reactions while a tracked Twitch channel is online. It uses lightweight reaction-spike rules to decide when an AI review is worthwhile, then asks DeepSeek to conservatively score the chat evidence. It stores only the strongest timestamps in Redis. After the stream ends and Twitch exposes the archive VOD, it sends up to three moments to Amaana for official Twitch clip creation and private YouTube upload.
+
+This is AI-assisted **chat-reaction detection**. DeepSeek is text-only and does not claim to watch the video or hear the audio.
+
+Required Render variables:
+
+- `CLIP_WEBHOOK_URL=https://amaana-yt.onrender.com/api/twitch/vod-clips`
+- `CLIP_WEBHOOK_KEY`: the same secret as Amaana's `AGENT_KEY`
+- `HIGHLIGHT_DETECTION_ENABLED=true`
+
+Optional tuning variables are `HIGHLIGHT_WINDOW_SECONDS`, `HIGHLIGHT_MIN_MESSAGES`, `HIGHLIGHT_COOLDOWN_SECONDS`, and `HIGHLIGHT_MAX_CLIPS`. Do not commit the webhook key.
+
 Worker results are written to worker-output as JSON. Render's filesystem is ephemeral, so configure the posting integrations or move results to durable storage for long-term retention.
 
 ## Redis budget
