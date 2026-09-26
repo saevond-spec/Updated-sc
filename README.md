@@ -26,9 +26,9 @@ The analysis worker uses DeepSeek and chains clip generation and stream summary 
 
 ## Automatic Twitch VOD highlights
 
-The optional highlight detector watches live chat reactions while a tracked Twitch channel is online. It uses lightweight reaction-spike rules to decide when an AI review is worthwhile, then asks DeepSeek to conservatively score the chat evidence. It stores only the strongest timestamps in Redis. After the stream ends and Twitch exposes the archive VOD, it sends up to three moments to Amaana for official Twitch clip creation and private YouTube upload.
+The optional highlight detector watches live chat reactions while a tracked Twitch channel is online. It uses lightweight reaction-spike rules to decide when an AI review is worthwhile, then asks DeepSeek to conservatively score the chat evidence. It stores only the strongest timestamps in Redis. After the stream ends and Twitch exposes the archive VOD, it sends up to five moments by default (configurable up to eight) to Amaana. Amaana assembles a longer highlight video, cuts Shorts from the assembly, and uploads the highlight and Shorts as private YouTube drafts. Each Twitch source clip is at most 60 seconds. Continuous 24/7 streams must actually end before this post-stream workflow starts.
 
-This is AI-assisted **chat-reaction detection**. DeepSeek is text-only and does not claim to watch the video or hear the audio.
+This is AI-assisted **chat-reaction detection**. DeepSeek is text-only and does not watch the video or hear the audio. Streams with no qualifying chat reactions do not produce a highlight batch.
 
 Required Render variables:
 

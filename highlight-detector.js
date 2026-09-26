@@ -58,7 +58,7 @@ export class HighlightDetector {
     this.windowMs = asNumber(process.env.HIGHLIGHT_WINDOW_SECONDS, 20, 10, 60) * 1000;
     this.minimumMessages = asNumber(process.env.HIGHLIGHT_MIN_MESSAGES, 3, 1, 20);
     this.cooldownMs = asNumber(process.env.HIGHLIGHT_COOLDOWN_SECONDS, 150, 60, 900) * 1000;
-    this.maxClips = asNumber(process.env.HIGHLIGHT_MAX_CLIPS, 3, 1, 5);
+    this.maxClips = asNumber(process.env.HIGHLIGHT_MAX_CLIPS, 5, 1, 8);
     this.states = new Map();
     this.interval = null;
     this.finalizeTimers = new Set();
